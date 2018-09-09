@@ -402,16 +402,12 @@ static void initialize(TargetLibraryInfoImpl &TLI, const Triple &T,
     TLI.setUnavailable(LibFunc::under_IO_getc);
     TLI.setUnavailable(LibFunc::under_IO_putc);
     TLI.setUnavailable(LibFunc::memalign);
-    TLI.setUnavailable(LibFunc::fopen64);
-    TLI.setUnavailable(LibFunc::fseeko64);
     TLI.setUnavailable(LibFunc::fstat64);
     TLI.setUnavailable(LibFunc::fstatvfs64);
-    TLI.setUnavailable(LibFunc::ftello64);
     TLI.setUnavailable(LibFunc::lstat64);
     TLI.setUnavailable(LibFunc::open64);
     TLI.setUnavailable(LibFunc::stat64);
     TLI.setUnavailable(LibFunc::statvfs64);
-    TLI.setUnavailable(LibFunc::tmpfile64);
   }
 
   // As currently implemented in clang, NVPTX code has no standard library to
@@ -753,11 +749,9 @@ bool TargetLibraryInfoImpl::isValidProtoForLibFunc(const FunctionType &FTy,
   case LibFunc::flockfile:
   case LibFunc::free:
   case LibFunc::fseek:
-  case LibFunc::fseeko64:
   case LibFunc::fseeko:
   case LibFunc::fsetpos:
   case LibFunc::ftell:
-  case LibFunc::ftello64:
   case LibFunc::ftello:
   case LibFunc::ftrylockfile:
   case LibFunc::funlockfile:
@@ -881,12 +875,6 @@ bool TargetLibraryInfoImpl::isValidProtoForLibFunc(const FunctionType &FTy,
   case LibFunc::dunder_isoc99_sscanf:
     return (NumParams >= 2 && FTy.getParamType(0)->isPointerTy() &&
             FTy.getParamType(1)->isPointerTy());
-  case LibFunc::fopen64:
-    return (NumParams == 2 && FTy.getReturnType()->isPointerTy() &&
-            FTy.getParamType(0)->isPointerTy() &&
-            FTy.getParamType(1)->isPointerTy());
-  case LibFunc::tmpfile64:
-    return (FTy.getReturnType()->isPointerTy());
   case LibFunc::fstat64:
   case LibFunc::fstatvfs64:
     return (NumParams == 2 && FTy.getParamType(1)->isPointerTy());
