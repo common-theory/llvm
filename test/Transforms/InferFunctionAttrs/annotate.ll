@@ -352,9 +352,6 @@ declare i32 @fsetpos(%opaque*, i64*)
 ; CHECK: declare i32 @fstat(i32, %opaque* nocapture) [[G0]]
 declare i32 @fstat(i32, %opaque*)
 
-; CHECK-LINUX: declare i32 @fstat64(i32, %opaque* nocapture) [[G0]]
-declare i32 @fstat64(i32, %opaque*)
-
 ; CHECK: declare i32 @fstatvfs(i32, %opaque* nocapture) [[G0]]
 declare i32 @fstatvfs(i32, %opaque*)
 
@@ -477,9 +474,6 @@ declare x86_fp80 @logl(x86_fp80)
 
 ; CHECK: declare i32 @lstat(i8* nocapture readonly, %opaque* nocapture) [[G0]]
 declare i32 @lstat(i8*, %opaque*)
-
-; CHECK-LINUX: declare i32 @lstat64(i8* nocapture readonly, %opaque* nocapture) [[G0]]
-declare i32 @lstat64(i8*, %opaque*)
 
 ; CHECK: declare noalias i8* @malloc(i64) [[G0]]
 declare i8* @malloc(i64)
@@ -678,9 +672,6 @@ declare i32 @sscanf(i8*, i8*, ...)
 
 ; CHECK: declare i32 @stat(i8* nocapture readonly, %opaque* nocapture) [[G0]]
 declare i32 @stat(i8*, %opaque*)
-
-; CHECK-LINUX: declare i32 @stat64(i8* nocapture readonly, %opaque* nocapture) [[G0]]
-declare i32 @stat64(i8*, %opaque*)
 
 ; CHECK: declare i32 @statvfs(i8* nocapture readonly, %opaque* nocapture) [[G0]]
 declare i32 @statvfs(i8*, %opaque*)

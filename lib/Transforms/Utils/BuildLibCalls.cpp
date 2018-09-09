@@ -624,8 +624,6 @@ bool llvm::inferLibFuncAttributes(Function &F, const TargetLibraryInfo &TLI) {
     Changed |= setDoesNotCapture(F, 1);
     Changed |= setOnlyReadsMemory(F, 1);
     return Changed;
-  case LibFunc::stat64:
-  case LibFunc::lstat64:
   case LibFunc::statvfs64:
     Changed |= setDoesNotThrow(F);
     Changed |= setDoesNotCapture(F, 1);
@@ -639,7 +637,6 @@ bool llvm::inferLibFuncAttributes(Function &F, const TargetLibraryInfo &TLI) {
     Changed |= setOnlyReadsMemory(F, 1);
     Changed |= setOnlyReadsMemory(F, 2);
     return Changed;
-  case LibFunc::fstat64:
   case LibFunc::fstatvfs64:
     Changed |= setDoesNotThrow(F);
     Changed |= setDoesNotCapture(F, 2);

@@ -333,9 +333,6 @@ declare void @fsetpos(...)
 ; CHECK: declare void @fstat(...)
 declare void @fstat(...)
 
-; CHECK: declare void @fstat64(...)
-declare void @fstat64(...)
-
 ; CHECK: declare void @fstatvfs(...)
 declare void @fstatvfs(...)
 
@@ -458,9 +455,6 @@ declare void @logl(...)
 
 ; CHECK: declare void @lstat(...)
 declare void @lstat(...)
-
-; CHECK: declare void @lstat64(...)
-declare void @lstat64(...)
 
 ; CHECK: declare void @malloc(...)
 declare void @malloc(...)
@@ -662,9 +656,6 @@ declare void @sscanf(...)
 
 ; CHECK: declare void @stat(...)
 declare void @stat(...)
-
-; CHECK: declare void @stat64(...)
-declare void @stat64(...)
 
 ; CHECK: declare void @statvfs(...)
 declare void @statvfs(...)

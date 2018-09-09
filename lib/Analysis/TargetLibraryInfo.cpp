@@ -402,11 +402,8 @@ static void initialize(TargetLibraryInfoImpl &TLI, const Triple &T,
     TLI.setUnavailable(LibFunc::under_IO_getc);
     TLI.setUnavailable(LibFunc::under_IO_putc);
     TLI.setUnavailable(LibFunc::memalign);
-    TLI.setUnavailable(LibFunc::fstat64);
     TLI.setUnavailable(LibFunc::fstatvfs64);
-    TLI.setUnavailable(LibFunc::lstat64);
     TLI.setUnavailable(LibFunc::open64);
-    TLI.setUnavailable(LibFunc::stat64);
     TLI.setUnavailable(LibFunc::statvfs64);
   }
 
@@ -867,15 +864,12 @@ bool TargetLibraryInfoImpl::isValidProtoForLibFunc(const FunctionType &FTy,
     return (NumParams == 2 && FTy.getParamType(1)->isPointerTy());
   case LibFunc::dunder_isoc99_scanf:
     return (NumParams >= 1 && FTy.getParamType(0)->isPointerTy());
-  case LibFunc::stat64:
-  case LibFunc::lstat64:
   case LibFunc::statvfs64:
     return (NumParams == 2 && FTy.getParamType(0)->isPointerTy() &&
             FTy.getParamType(1)->isPointerTy());
   case LibFunc::dunder_isoc99_sscanf:
     return (NumParams >= 2 && FTy.getParamType(0)->isPointerTy() &&
             FTy.getParamType(1)->isPointerTy());
-  case LibFunc::fstat64:
   case LibFunc::fstatvfs64:
     return (NumParams == 2 && FTy.getParamType(1)->isPointerTy());
   case LibFunc::open64:
